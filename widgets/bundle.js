@@ -200,15 +200,16 @@ var Tabs =
 function (_React$Component) {
   _inherits(Tabs, _React$Component);
 
-  function Tabs() {
+  function Tabs(props) {
     var _this;
 
     _classCallCheck(this, Tabs);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, props));
     _this.state = {
       index: 0
     };
+    console.log(_this.props.tabs);
     return _this;
   }
 
@@ -218,9 +219,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var tabNames = this.props.tabs.map(function (el, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          key: "tab-".concat(idx)
+        }, el.title);
+      });
+      var content = this.props.tabs.map(function (el, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          key: "tab-".concat(idx)
+        }, el.content);
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tabs"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, tabNames, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", null, content)));
     }
   }]);
 
@@ -250,11 +261,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var stuff = [{
+  title: "kittens",
+  content: "love me some kittens"
+}, {
+  title: 'puppies',
+  content: "Puppies are cute and all but they smell"
+}, {
+  title: 'death',
+  content: "death metal helps my migranes"
+}];
 
 var Root = function Root() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "test"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    tabs: stuff
+  }));
 };
 
 document.addEventListener("DOMContentLoaded", function () {

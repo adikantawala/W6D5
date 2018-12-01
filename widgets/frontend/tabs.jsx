@@ -2,9 +2,10 @@ import React from "react";
 
 class Tabs extends React.Component {
   
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = { index: 0 };
+    console.log(this.props.tabs);
   }
   
   getTitles(){
@@ -12,10 +13,21 @@ class Tabs extends React.Component {
   }
 
   render() {
+    const tabNames = this.props.tabs.map((el, idx) => {
+      return <h1 key={`tab-${idx}`}>{el.title}</h1>;
+    });
+    const content = this.props.tabs.map((el, idx) => {
+      return <p key={`tab-${idx}`}>{el.content}</p>;
+    });
+    
+    
     return (
       <div className="tabs"> 
         <ul> 
-          
+          {tabNames}
+          <article> 
+            {content}
+          </article>
         </ul>
       </div>
     );
