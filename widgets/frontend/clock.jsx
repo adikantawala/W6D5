@@ -24,7 +24,7 @@ class Clock extends React.Component {
         <h1>Date: { this.state.time.toDateString() }</h1>
       </div>
     );
-  } //look for a method to help parse time
+  } 
   
 }
 
